@@ -23,3 +23,16 @@ class PasswordToolkitApp(ctk.CTk):
         self.title("Password Toolkit")
         self.geometry("640x620")
         self.configure(fg_color=BG)
+
+        ctk.CTkLabel(self, text="Analyze", font=ctk.CTkFont(size=16, weight="bold"),
+                     text_color=ACCENT).pack(anchor="w", padx=24, pady=(24, 6))
+
+        analyze_frame = ctk.CTkFrame(self, fg_color=PANEL, corner_radius=12)
+        analyze_frame.pack(fill="x", padx=24)
+        self.password_var = ctk.StringVar()
+        entry = ctk.CTkEntry(analyze_frame, textvariable=self.password_var, width=400, show="*")
+        entry.pack(side="left", padx=16, pady=16)
+        entry.bind("<KeyRelease>", lambda e: self._analyze())
+        self.show_var = ctk.BooleanVar(value=False)
+        ctk.CTkSwitch(analyze_frame, text="Show", variable=self.show_var,
+                     command=lambda: entry.configure(show="" if self.show_var.get() else "*")).pack(side="left")
