@@ -36,3 +36,13 @@ class PasswordToolkitApp(ctk.CTk):
         self.show_var = ctk.BooleanVar(value=False)
         ctk.CTkSwitch(analyze_frame, text="Show", variable=self.show_var,
                      command=lambda: entry.configure(show="" if self.show_var.get() else "*")).pack(side="left")
+
+        self.analysis_var = ctk.StringVar(value="")
+        ctk.CTkLabel(self, textvariable=self.analysis_var, text_color="#e6e6e6", justify="left",
+                     wraplength=560).pack(anchor="w", padx=24, pady=(10, 30))
+
+        ctk.CTkLabel(self, text="Generate", font=ctk.CTkFont(size=16, weight="bold"),
+                     text_color=ACCENT).pack(anchor="w", padx=24, pady=(0, 6))
+
+        gen_frame = ctk.CTkFrame(self, fg_color=PANEL, corner_radius=12)
+        gen_frame.pack(fill="x", padx=24)
