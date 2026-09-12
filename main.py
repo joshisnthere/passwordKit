@@ -46,3 +46,9 @@ class PasswordToolkitApp(ctk.CTk):
 
         gen_frame = ctk.CTkFrame(self, fg_color=PANEL, corner_radius=12)
         gen_frame.pack(fill="x", padx=24)
+
+        ctk.CTkLabel(gen_frame, text="Length").grid(row=0, column=0, padx=16, pady=16, sticky="w")
+        self.length_slider = ctk.CTkSlider(gen_frame, from_=8, to=32, number_of_steps=24)
+        self.length_slider.set(16)
+        self.length_slider.grid(row=0, column=1, padx=16, sticky="ew")
+        gen_frame.grid_columnconfigure(1, weight=1)
