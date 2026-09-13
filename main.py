@@ -61,3 +61,12 @@ class PasswordToolkitApp(ctk.CTk):
         ctk.CTkCheckBox(opts, text="Uppercase", variable=self.use_upper).pack(side="left", padx=(0, 10))
         ctk.CTkCheckBox(opts, text="Digits", variable=self.use_digits).pack(side="left", padx=(0, 10))
         ctk.CTkCheckBox(opts, text="Symbols", variable=self.use_symbols).pack(side="left")
+
+        ctk.CTkButton(gen_frame, text="Generate", fg_color="#2a2a30",
+                      command=self._generate).grid(row=2, column=0, padx=16, pady=16)
+
+        self.generated_var = ctk.StringVar(value="")
+        result_entry = ctk.CTkEntry(gen_frame, textvariable=self.generated_var, width=300)
+        result_entry.grid(row=2, column=1, padx=16, sticky="w")
+        ctk.CTkButton(gen_frame, text="Copy", width=70, fg_color="#2a2a30",
+                      command=self._copy_generated).grid(row=2, column=2, padx=(0, 16))
