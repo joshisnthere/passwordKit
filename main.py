@@ -70,3 +70,11 @@ class PasswordToolkitApp(ctk.CTk):
         result_entry.grid(row=2, column=1, padx=16, sticky="w")
         ctk.CTkButton(gen_frame, text="Copy", width=70, fg_color="#2a2a30",
                       command=self._copy_generated).grid(row=2, column=2, padx=(0, 16))
+
+    def _analyze(self):
+        pw = self.password_var.get()
+        if not pw:
+            self.analysis_var.set("")
+            return
+        entropy, crack_time = logic.analyze(pw)
+        self.analysis_var.set(f"Entropy: {entropy} bits\nEstimated crack time (offline attack): {crack_time}")
