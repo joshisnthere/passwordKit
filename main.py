@@ -52,3 +52,12 @@ class PasswordToolkitApp(ctk.CTk):
         self.length_slider.set(16)
         self.length_slider.grid(row=0, column=1, padx=16, sticky="ew")
         gen_frame.grid_columnconfigure(1, weight=1)
+
+        self.use_upper = ctk.BooleanVar(value=True)
+        self.use_digits = ctk.BooleanVar(value=True)
+        self.use_symbols = ctk.BooleanVar(value=True)
+        opts = ctk.CTkFrame(gen_frame, fg_color=PANEL)
+        opts.grid(row=1, column=0, columnspan=2, padx=16, pady=(0, 10), sticky="w")
+        ctk.CTkCheckBox(opts, text="Uppercase", variable=self.use_upper).pack(side="left", padx=(0, 10))
+        ctk.CTkCheckBox(opts, text="Digits", variable=self.use_digits).pack(side="left", padx=(0, 10))
+        ctk.CTkCheckBox(opts, text="Symbols", variable=self.use_symbols).pack(side="left")
