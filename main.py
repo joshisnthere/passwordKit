@@ -78,3 +78,13 @@ class PasswordToolkitApp(ctk.CTk):
             return
         entropy, crack_time = logic.analyze(pw)
         self.analysis_var.set(f"Entropy: {entropy} bits\nEstimated crack time (offline attack): {crack_time}")
+
+    def _generate(self):
+        length = int(self.length_slider.get())
+        pw = logic.generate(length, self.use_upper.get(), self.use_digits.get(), self.use_symbols.get())
+        self.generated_var.set(pw)
+
+    def _copy_generated(self):
+        if self.generated_var.get():
+            self.clipboard_clear()
+            self.clipboard_append(self.generated_var.get())
