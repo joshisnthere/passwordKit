@@ -88,3 +88,8 @@ class PasswordToolkitApp(ctk.CTk):
         if self.generated_var.get():
             self.clipboard_clear()
             self.clipboard_append(self.generated_var.get())
+
+
+if __name__ == "__main__":
+    app = PasswordToolkitApp()
+    app.mainloop()
