@@ -10,3 +10,15 @@ import string
 
 GUESSES_PER_SECOND = 1e10  # rough offline-attack assumption
 
+
+def _charset_size(password):
+    size = 0
+    if any(c.islower() for c in password):
+        size += 26
+    if any(c.isupper() for c in password):
+        size += 26
+    if any(c.isdigit() for c in password):
+        size += 10
+    if any(c in string.punctuation for c in password):
+        size += len(string.punctuation)
+    return max(size, 1)
