@@ -33,3 +33,16 @@ def analyze(password):
 
     return entropy, crack_time
 
+
+def _humanize(seconds):
+    if seconds < 1:
+        return "instantly"
+    units = [
+        ("years", 31536000), ("days", 86400), ("hours", 3600),
+        ("minutes", 60), ("seconds", 1),
+    ]
+    for name, size in units:
+        if seconds >= size:
+            value = seconds / size
+            return f"~{value:,.0f} {name}"
+    return "instantly"
