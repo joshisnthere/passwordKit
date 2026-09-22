@@ -27,3 +27,9 @@ def _charset_size(password):
 def analyze(password):
     charset_size = _charset_size(password)
     entropy = round(len(password) * math.log2(charset_size), 1)
+
+    seconds = (2 ** entropy) / GUESSES_PER_SECOND
+    crack_time = _humanize(seconds)
+
+    return entropy, crack_time
+
