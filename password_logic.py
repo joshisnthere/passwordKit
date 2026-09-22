@@ -22,3 +22,8 @@ def _charset_size(password):
     if any(c in string.punctuation for c in password):
         size += len(string.punctuation)
     return max(size, 1)
+
+
+def analyze(password):
+    charset_size = _charset_size(password)
+    entropy = round(len(password) * math.log2(charset_size), 1)
