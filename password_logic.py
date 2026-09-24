@@ -46,3 +46,13 @@ def _humanize(seconds):
             value = seconds / size
             return f"~{value:,.0f} {name}"
     return "instantly"
+
+
+def generate(length, use_upper, use_digits, use_symbols):
+    charset = list(string.ascii_lowercase)
+    if use_upper:
+        charset += list(string.ascii_uppercase)
+    if use_digits:
+        charset += list(string.digits)
+    if use_symbols:
+        charset += list("!@#$%^&*()-_=+")
