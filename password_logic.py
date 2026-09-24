@@ -56,3 +56,5 @@ def generate(length, use_upper, use_digits, use_symbols):
         charset += list(string.digits)
     if use_symbols:
         charset += list("!@#$%^&*()-_=+")
+
+    return "".join(secrets.choice(charset) for _ in range(length))
